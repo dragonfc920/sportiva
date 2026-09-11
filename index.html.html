@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SPORTIVA | Local Sports</title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#07090d;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button{
+    font-family:inherit;
+    cursor:pointer;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    height:76px;
+    padding:0 6%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    background:rgba(7,9,13,.94);
+    backdrop-filter:blur(15px);
+
+    border-bottom:1px solid #20252d;
+
+    position:sticky;
+    top:0;
+    z-index:999;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:900;
+    letter-spacing:-1.5px;
+}
+
+.logo span{
+    color:#a5ff00;
+}
+
+nav{
+    display:flex;
+    gap:24px;
+}
+
+nav a{
+    font-size:12px;
+    font-weight:800;
+    color:#b9c0ca;
+    text-transform:uppercase;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#a5ff00;
+}
+
+.menu{
+    display:none;
+    border:none;
+    background:none;
+    color:white;
+    font-size:25px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:650px;
+
+    display:flex;
+    align-items:center;
+
+    padding:90px 8%;
+
+    background:
+    radial-gradient(
+        circle at 80% 35%,
+        rgba(150,255,0,.18),
+        transparent 35%
+    ),
+    linear-gradient(
+        135deg,
+        #080a0f,
+        #111820
+    );
+
+    position:relative;
+    overflow:hidden;
+}
+
+.hero:after{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    border:1px solid rgba(165,255,0,.12);
+    border-radius:50%;
+    right:-180px;
+    bottom:-220px;
+}
+
+.hero-content{
+    max-width:750px;
+    animation:heroIn 1s ease;
+}
+
+@keyframes heroIn{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+.eyebrow{
+    color:#a5ff00;
+    font-size:11px;
+    letter-spacing:3px;
+    font-weight:900;
+}
+
+.hero h1{
+    font-size:clamp(65px,10vw,125px);
+    line-height:.83;
+    letter-spacing:-7px;
+    margin:25px 0;
+    font-weight:1000;
+}
+
+.hero h1 span{
+    color:#a5ff00;
+}
+
+.hero p{
+    max-width:550px;
+    color:#aab1bc;
+    font-size:17px;
+    line-height:1.7;
+    margin-bottom:30px;
+}
+
+.btn{
+    display:inline-block;
+    background:#a5ff00;
+    color:#050805;
+
+    padding:16px 24px;
+
+    font-size:12px;
+    font-weight:900;
+
+    border-radius:4px;
+
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 30px rgba(165,255,0,.18);
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+section{
+    padding:80px 7%;
+    border-top:1px solid #1c2129;
+}
+
+.section-title{
+    margin-bottom:30px;
+}
+
+.section-title small{
+    color:#a5ff00;
+    letter-spacing:3px;
+    font-size:11px;
+    font-weight:900;
+}
+
+.section-title h2{
+    font-size:43px;
+    letter-spacing:-2px;
+    margin-top:5px;
+}
+
+/* =========================
+   LIVE SCORE
+========================= */
+
+.live-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+}
+
+.live-badge{
+    color:#a5ff00;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.score-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.score-card{
+    background:#10141a;
+    border:1px solid #272d36;
+
+    padding:25px;
+
+    border-radius:9px;
+
+    transition:.3s;
+}
+
+.score-card:hover{
+    transform:translateY(-7px);
+    border-color:#a5ff00;
+}
+
+.sport{
+    color:#a5ff00;
+    font-size:11px;
+    font-weight:900;
+}
+
+.score-card small{
+    color:#7f8793;
+}
+
+.score-card h3{
+    margin:22px 0 12px;
+    font-size:20px;
+}
+
+.score{
+    float:right;
+    color:#fff;
+}
+
+.live-time{
+    color:#a5ff00;
+    font-size:11px;
+    font-weight:bold;
+}
+
+.progress{
+    height:3px;
+    background:#292f38;
+    margin-top:15px;
+    overflow:hidden;
+}
+
+.progress div{
+    height:100%;
+    width:65%;
+    background:#a5ff00;
+    animation:progress 2s infinite alternate;
+}
+
+@keyframes progress{
+
+    from{
+        width:55%;
+    }
+
+    to{
+        width:80%;
+    }
+
+}
+
+/* =========================
+   NEWS
+========================= */
+
+.news-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:18px;
+}
+
+.news-card{
+    background:#10141a;
+    border:1px solid #272d36;
+
+    border-radius:9px;
+    overflow:hidden;
+
+    transition:.3s;
+}
+
+.news-card:hover{
+    transform:translateY(-6px);
+}
+
+.news-image{
+    height:170px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:65px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #16230d,
+        #151a20
+    );
+}
+
+.news-content{
+    padding:22px;
+}
+
+.news-content small{
+    color:#a5ff00;
+    font-size:10px;
+    font-weight:bold;
+}
+
+.news-content h3{
+    font-size:20px;
+    margin:10px 0;
+}
+
+.news-content p{
+    color:#8f98a5;
+    font-size:13px;
+    line-height:1.6;
+}
+
+.read{
+    border:none;
+    background:none;
+
+    color:#a5ff00;
+
+    font-size:11px;
+    font-weight:900;
+
+    margin-top:15px;
+}
+
+/* =========================
+   FIXTURES
+========================= */
+
+.fixture-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.fixture{
+    background:#10141a;
+    border:1px solid #272d36;
+
+    padding:25px;
+
+    border-radius:9px;
+
+    transition:.3s;
+}
+
+.fixture:hover{
+    border-color:#a5ff00;
+    transform:translateY(-5px);
+}
+
+.fixture small{
+    color:#777f8c;
+    font-size:10px;
+}
+
+.fixture h3{
+    margin:15px 0;
+}
+
+.fixture .time{
+    color:#a5ff00;
+    font-weight:bold;
+}
+
+/* =========================
+   RESULTS
+========================= */
+
+.results{
+    display:grid;
+    gap:12px;
+}
+
+.result-row{
+    background:#10141a;
+
+    border:1px solid #272d36;
+
+    padding:18px 22px;
+
+    border-radius:7px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    transition:.3s;
+}
+
+.result-row:hover{
+    border-color:#a5ff00;
+}
+
+.result-score{
+    color:#a5ff00;
+    font-weight:900;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.table-wrap{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:#10141a;
+    border-radius:8px;
+    overflow:hidden;
+}
+
+th{
+    color:#a5ff00;
+    font-size:11px;
+    text-align:left;
+}
+
+th,td{
+    padding:17px;
+    border-bottom:1px solid #252b34;
+}
+
+td{
+    color:#c7ccd4;
+    font-size:13px;
+}
+
+.rank{
+    color:#a5ff00;
+    font-weight:bold;
+}
+
+/* =========================
+   TEAMS
+========================= */
+
+.team-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.team{
+    padding:30px;
+
+    background:#10141a;
+    border:1px solid #272d36;
+
+    border-radius:9px;
+
+    transition:.3s;
+}
+
+.team:hover{
+    transform:scale(1.03);
+    border-color:#a5ff00;
+}
+
+.team-icon{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.team h3{
+    font-size:20px;
+}
+
+.team p{
+    color:#808995;
+    font-size:12px;
+    margin-top:5px;
+}
+
+/* =========================
+   TRANSFER NEWS
+========================= */
+
+.transfer-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.transfer{
+    background:#10141a;
+    border:1px solid #272d36;
+
+    padding:24px;
+    border-radius:8px;
+}
+
+.transfer strong{
+    color:#a5ff00;
+}
+
+.transfer p{
+    margin-top:10px;
+    color:#929aa5;
+    font-size:13px;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about{
+    background:#0b0e13;
+}
+
+.about-box{
+    max-width:850px;
+}
+
+.about-box p{
+    color:#a1a8b2;
+    line-height:1.8;
+    margin-top:15px;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.contact-card{
+    background:#10141a;
+    border:1px solid #272d36;
+    padding:30px;
+    border-radius:8px;
+}
+
+.contact-card p{
+    color:#9aa2ad;
+    margin:12px 0;
+}
+
+.socials{
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+}
+
+.social{
+    padding:10px 15px;
+    border:1px solid #303641;
+    color:#a5ff00;
+    border-radius:4px;
+    font-size:12px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:55px 7%;
+    text-align:center;
+    border-top:1px solid #242830;
+}
+
+footer p{
+    color:#747d89;
+    font-size:11px;
+    letter-spacing:2px;
+    margin:12px 0;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:850px){
+
+    nav{
+        display:none;
+        position:absolute;
+        top:76px;
+        left:0;
+        right:0;
+
+        padding:25px;
+
+        background:#090c11;
+
+        flex-direction:column;
+
+        border-bottom:1px solid #222;
+    }
+
+    nav.active{
+        display:flex;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .score-grid,
+    .news-grid,
+    .fixture-grid,
+    .team-grid,
+    .transfer-grid,
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        min-height:580px;
+        padding:70px 7%;
+    }
+
+    .hero h1{
+        font-size:65px;
+        letter-spacing:-4px;
+    }
+
+    section{
+        padding:60px 7%;
+    }
+
+    .section-title h2{
+        font-size:35px;
+    }
+
+}
+
+.player-section{margin-top:45px}.player-team-title{display:flex;align-items:center;gap:12px;margin:30px 0 15px}.player-team-title h3{font-size:22px}.player-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.player-card{background:#10141a;border:1px solid #272d36;border-radius:9px;padding:20px;display:flex;align-items:center;gap:15px;transition:.3s}.player-card:hover{transform:translateY(-5px);border-color:#a5ff00}.jersey{width:52px;height:52px;border:2px solid #a5ff00;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#a5ff00;font-size:18px;font-weight:900;flex-shrink:0}.player-name{font-size:15px;font-weight:900}.player-meta{font-size:10px;color:#7f8793;margin-top:5px;letter-spacing:1px}@media(max-width:850px){.player-grid{grid-template-columns:1fr 1fr}}@media(max-width:520px){.player-grid{grid-template-columns:1fr}}</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+<div class="logo">
+SPORT<span>IVA</span>
+</div>
+
+<nav id="nav">
+
+<a href="#home">Home</a>
+<a href="#live">Live</a>
+<a href="#football">Football</a>
+<a href="#cricket">Cricket</a>
+<a href="#standings">Standings</a>
+<a href="#teams">Teams</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+
+</nav>
+
+<button class="menu" onclick="toggleMenu()">
+☰
+</button>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="home">
+
+<div class="hero-content">
+
+<div class="eyebrow">
+LOCAL SPORTS • LIVE & UPDATED
+</div>
+
+<h1>
+PLAY.<br>
+<span>COMPETE.</span><br>
+CONQUER.
+</h1>
+
+<p>
+SPORTIVA brings your local football and cricket matches,
+scores, fixtures, results, standings and sports news together
+in one place.
+</p>
+
+<a href="#live" class="btn">
+VIEW LIVE MATCHES →
+</a>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     LIVE
+========================= -->
+
+<section id="live">
+
+<div class="section-title">
+
+<small>MATCH CENTRE</small>
+
+<h2>🔴 LIVE SCORES</h2>
+
+</div>
+
+
+<div class="score-grid">
+
+
+<div class="score-card">
+
+<div class="sport">
+⚽ FOOTBALL
+</div>
+
+<small>Local Match</small>
+
+<h3>
+DRAGON FC
+<span class="score">2 — 1</span>
+</h3>
+
+<div class="live-time">
+LIVE • 67'
+</div>
+
+<div class="progress">
+<div></div>
+</div>
+
+</div>
+
+
+<div class="score-card">
+
+<div class="sport">
+⚽ FOOTBALL
+</div>
+
+<small>Local Match</small>
+
+<h3>
+SAMUNNAYA FC
+<span class="score">1 — 1</span>
+</h3>
+
+<div class="live-time">
+LIVE • 54'
+</div>
+
+<div class="progress">
+<div style="width:55%"></div>
+</div>
+
+</div>
+
+
+<div class="score-card">
+
+<div class="sport">
+🏏 CRICKET
+</div>
+
+<small>Local Match</small>
+
+<h3>
+
+<span class="score">124/5</span>
+</h3>
+
+<div class="live-time">
+LIVE • 16.2 OVERS
+</div>
+
+<div class="progress">
+<div style="width:72%"></div>
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     SPORTS NEWS
+========================= -->
+
+<section id="news">
+
+<div class="section-title">
+
+<small>LOCAL SPORTS</small>
+
+<h2>📰 SPORTS NEWS</h2>
+
+</div>
+
+
+<div class="news-grid">
+
+
+<div class="news-card">
+
+<div class="news-image">
+⚽
+</div>
+
+<div class="news-content">
+
+<small>UPCOMING MATCH</small>
+
+<h3>
+Football Match on 08 September 2027
+</h3>
+
+<p>
+📅 08 September 2027 &nbsp; • &nbsp; ⏰ 8:00 AM
+<br><br>
+Everyone is welcome! Come and enjoy the excitement of local football.
+</p>
+
+<button class="read" onclick="showMessage()">
+READ MORE →
+</button>
+
+</div>
+
+</div>
+
+
+<div class="news-card">
+
+<div class="news-image">
+🏏
+</div>
+
+<div class="news-content">
+
+<small>CRICKET</small>
+
+<h3>
+A thrilling local cricket battle
+</h3>
+
+<p>
+Latest scores and important performances from the match.
+</p>
+
+<button class="read" onclick="showMessage()">
+READ MORE →
+</button>
+
+</div>
+
+</div>
+
+
+<div class="news-card">
+
+<div class="news-image">
+🏆
+</div>
+
+<div class="news-content">
+
+<small>TOURNAMENT</small>
+
+<h3>
+Local teams ready for the next challenge
+</h3>
+
+<p>
+Fixtures and tournament updates from SPORTIVA.
+</p>
+
+<button class="read" onclick="showMessage()">
+READ MORE →
+</button>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     FOOTBALL
+========================= -->
+
+<section id="football">
+
+<div class="section-title">
+
+<small>FOOTBALL HUB</small>
+
+<h2>⚽ FOOTBALL</h2>
+
+</div>
+
+
+<h3 style="margin-bottom:20px;">
+📅 Fixtures
+</h3>
+
+
+<div class="fixture-grid">
+
+
+<div class="fixture">
+
+<small>UPCOMING MATCH</small>
+
+<h3>
+DRAGON FC
+<br>
+VS
+<br>
+SAMUNNAYA FC
+</h3>
+
+<div class="time">
+19:30
+</div>
+
+</div>
+
+
+</div>
+
+
+<h3 style="margin:50px 0 20px;">
+🏆 Results
+</h3>
+
+
+<div class="results">
+
+
+<div class="result-row">
+
+<span>DRAGON FC</span>
+
+<span class="result-score">
+2 — 1
+</span>
+
+<span>SAMUNNAYA FC</span>
+
+</div>
+
+
+</div>
+
+
+<h3 style="margin:50px 0 20px;">
+🔄 Transfer News
+</h3>
+
+
+<div class="transfer-grid">
+
+
+<div class="transfer">
+
+<strong>TRANSFER UPDATE</strong>
+
+<p>
+Player transfer updates will appear here.
+</p>
+
+</div>
+
+
+<div class="transfer">
+
+<strong>NEW SIGNING</strong>
+
+<p>
+New local football signings and squad updates.
+</p>
+
+</div>
+
+
+<div class="transfer">
+
+<strong>TEAM NEWS</strong>
+
+<p>
+Latest squad and player movement news.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CRICKET
+========================= -->
+
+
+
+
+<!-- =========================
+     STANDINGS
+========================= -->
+
+<section id="standings">
+
+<div class="section-title">
+
+<small>COMPETITION TABLE</small>
+
+<h2>📊 STANDINGS</h2>
+
+</div>
+
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>#</th>
+<th>TEAM</th>
+<th>P</th>
+<th>W</th>
+<th>D</th>
+<th>L</th>
+<th>PTS</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+<tr>
+
+<td class="rank">1</td>
+<td>🐉 DRAGON FC</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td class="rank">6</td>
+
+</tr>
+
+
+<tr>
+
+<td class="rank">2</td>
+<td>🔥 SAMUNNAYA FC</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td class="rank">4</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     TEAMS
+========================= -->
+
+<section id="teams">
+
+<div class="section-title">
+
+<small>LOCAL TEAMS</small>
+
+<h2>👥 TEAMS & PLAYERS</h2>
+
+</div>
+
+
+<div class="team-grid">
+
+
+<div class="team">
+
+<div class="team-icon">
+🐉
+</div>
+
+<h3>
+DRAGON FC
+</h3>
+
+<p>
+Football & Cricket
+</p>
+
+</div>
+
+
+<div class="team">
+
+<div class="team-icon">
+🔥
+</div>
+
+<h3>
+SAMUNNAYA FC
+</h3>
+
+<p>
+Football & Cricket
+</p>
+
+</div>
+
+
+</div>
+<div class="player-section"><div class="player-team-title"><span>🐉</span><h3>DRAGON FC — PLAYERS</h3></div><div class="player-grid"><div class="player-card"><div class="jersey">7</div><div><div class="player-name">Aju</div><div class="player-meta">DRAGON FC • #7</div></div></div><div class="player-card"><div class="jersey">5</div><div><div class="player-name">Baaisl</div><div class="player-meta">DRAGON FC • #5</div></div></div><div class="player-card"><div class="jersey">10</div><div><div class="player-name">Khalid</div><div class="player-meta">DRAGON FC • #10</div></div></div><div class="player-card"><div class="jersey">47</div><div><div class="player-name">Jalal</div><div class="player-meta">DRAGON FC • #47</div></div></div><div class="player-card"><div class="jersey">8</div><div><div class="player-name">Sinaj</div><div class="player-meta">DRAGON FC • #8</div></div></div><div class="player-card"><div class="jersey">98</div><div><div class="player-name">Murshid</div><div class="player-meta">DRAGON FC • #98</div></div></div><div class="player-card"><div class="jersey">11</div><div><div class="player-name">Afi</div><div class="player-meta">DRAGON FC • #11</div></div></div></div><div class="player-team-title"><span>🔥</span><h3>SAMUNNAYA FC — PLAYERS</h3></div><div class="player-grid"><div class="player-card"><div class="jersey">45</div><div><div class="player-name">Hisham</div><div class="player-meta">SAMUNNAYA FC • #45</div></div></div><div class="player-card"><div class="jersey">87</div><div><div class="player-name">Ffhjkjhh</div><div class="player-meta">SAMUNNAYA FC • #87</div></div></div><div class="player-card"><div class="jersey">88</div><div><div class="player-name">Kjghjjk</div><div class="player-meta">SAMUNNAYA FC • #88</div></div></div><div class="player-card"><div class="jersey">56</div><div><div class="player-name">Kalak</div><div class="player-meta">SAMUNNAYA FC • #56</div></div></div><div class="player-card"><div class="jersey">64</div><div><div class="player-name">Harshi</div><div class="player-meta">SAMUNNAYA FC • #64</div></div></div><div class="player-card"><div class="jersey">12</div><div><div class="player-name">Hidhas</div><div class="player-meta">SAMUNNAYA FC • #12</div></div></div><div class="player-card"><div class="jersey">64</div><div><div class="player-name">Rafi</div><div class="player-meta">SAMUNNAYA FC • #64</div></div></div></div></div>
+</section>
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section class="about" id="about">
+
+<div class="section-title">
+
+<small>WHO WE ARE</small>
+
+<h2>ℹ️ ABOUT SPORTIVA</h2>
+
+</div>
+
+
+<div class="about-box">
+
+<p>
+SPORTIVA is a local sports platform created to bring
+football and cricket matches closer to the community.
+</p>
+
+<p>
+Our goal is simple: make it easy for fans to follow
+local teams, fixtures, results, live scores, standings
+and sports news.
+</p>
+
+<p>
+⚽ Football • 🏏 Cricket • 🏆 Local Sports
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section id="contact">
+
+<div class="section-title">
+
+<small>GET IN TOUCH</small>
+
+<h2>📞 CONTACT</h2>
+
+</div>
+
+
+<div class="contact-grid">
+
+
+<div class="contact-card">
+
+<h3>
+SPORTIVA
+</h3>
+
+<p>
+For match updates, team information,
+sports news and tournament details.
+</p>
+
+<p>
+📧 Email: sportiva@example.com
+</p>
+
+<p>
+📱 Phone: +91 XXXXX XXXXX
+</p>
+
+</div>
+
+
+<div class="contact-card">
+
+<h3>
+SOCIAL MEDIA
+</h3>
+
+<div class="socials">
+
+<a class="social" href="#">
+Instagram
+</a>
+
+<a class="social" href="#">
+Facebook
+</a>
+
+<a class="social" href="#">
+YouTube
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+<div class="logo">
+SPORT<span>IVA</span>
+</div>
+
+<p>
+PLAY. COMPETE. CONQUER.
+</p>
+
+<p>
+© 2026 SPORTIVA • LOCAL SPORTS
+</p>
+
+</footer>
+
+
+<script>
+
+/* MOBILE MENU */
+
+function toggleMenu(){
+
+    document
+    .getElementById("nav")
+    .classList
+    .toggle("active");
+
+}
+
+
+/* NEWS BUTTON */
+
+function showMessage(){
+
+    alert(
+        "SPORTIVA local sports news section — full story coming soon!"
+    );
+
+}
+
+
+/* LIVE SCORE ANIMATION */
+
+setInterval(function(){
+
+    const bars =
+    document.querySelectorAll(".progress div");
+
+    bars.forEach(function(bar){
+
+        bar.style.width =
+        (55 + Math.floor(Math.random()*25)) + "%";
+
+    });
+
+},3000);
+
+</script>
+
+
+</body>
+</html>
